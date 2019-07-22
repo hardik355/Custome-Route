@@ -1,0 +1,20 @@
+<h1> Listing All Data </h1>
+<%= link_to 'New Record', users_new_path %>
+<table>
+  <tr>
+    <th> Name </th>
+    <th> Email </th>
+  </tr>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.name %></td>
+        <td><%= user.email %></td>
+        
+        <td><%= link_to 'Show', user_path(user[:id]) %></td>
+        <td><%= link_to 'Edit', edit_user_path(user[:id]) %></td>
+        <td><%= link_to 'Destroy', user_path(user), 
+                                method: :"delete",
+                                data: {confirm: "Are You Sure"} %> </td> 
+      </tr>
+    <% end %>
+</table>
